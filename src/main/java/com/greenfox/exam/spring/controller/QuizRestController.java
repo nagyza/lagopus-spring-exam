@@ -21,7 +21,11 @@ public class QuizRestController {
   }
 
   @PostMapping(value = "/answers")
-  public void answers(@RequestBody AnswerWrapper answerWrapper) {
-
+  public String answers(@RequestBody AnswerWrapper answerWrapper) {
+    if (quiz.analizeAnswers(answerWrapper)) {
+      return "ok";
+    } else {
+      return "hohoho!";
+    }
   }
 }
