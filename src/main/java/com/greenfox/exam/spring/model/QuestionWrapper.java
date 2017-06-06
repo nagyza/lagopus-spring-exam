@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -20,6 +21,11 @@ public class QuestionWrapper {
   private List<Question> questions;
 
   public QuestionWrapper() {
+    this.questions = new ArrayList<>();
+  }
+
+  public Long getId() {
+    return id;
   }
 
   public void addQuestion(Question question) {
