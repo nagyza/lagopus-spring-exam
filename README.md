@@ -115,10 +115,10 @@ in it's subclasses.
 Please name the parts of the URL below.
 [<img src="assets/URLanalysis.png" alt="parts of URL" />](assets/URLanalysis.png?raw=true)
 
-1:  
-2:  
-3:  
-4:  
-5:  
-6:  
-7:  
+1: Type of the protocol
+2: sub domain (for API)
+3: domain 
+4: port 
+5: endpoint 
+6: separator for request parameters 
+7: request parameter 
