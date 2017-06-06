@@ -13,13 +13,15 @@ public class Quiz {
   @Autowired
   QuestionAndAnswerRepository questionAndAnswerRepository;
 
+  @Autowired
+  QuestionWrapper questionWrapper;
+
   public Quiz() {
   }
 
   public QuestionWrapper getQuestions() {
-    QuestionWrapper questionWrapper = new QuestionWrapper();
-    QuestionAndAnswer questionAndAnswer = randomQuestion();
     for (int i = 0; i < 5; i++) {
+      QuestionAndAnswer questionAndAnswer = randomQuestion();
       questionWrapper.addQuestion(new Question(questionAndAnswer.getId(), questionAndAnswer.getQuestion()));
     }
     return questionWrapper;
@@ -29,7 +31,7 @@ public class Quiz {
     return questionAndAnswerRepository.findOne(random());
   }
 
-  private long random() {
+  private Long random() {
     return (long) (Math.random() * questionAndAnswerRepository.count()) + 1;
   }
 }
