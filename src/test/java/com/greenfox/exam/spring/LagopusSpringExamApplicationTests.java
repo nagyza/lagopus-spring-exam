@@ -1,4 +1,4 @@
-package com.greenfox.springexam;
+package com.greenfox.exam.spring;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
