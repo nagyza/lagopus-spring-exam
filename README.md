@@ -106,6 +106,10 @@ Your task is to create a RESTful quiz application with full of greenfox question
 
 Please define it with your own words. We are expecting at least 3 distinct ideas that you write here:
 
+An interface has no variables but it's all methods has to be implemented in it's subclasses.
+An abstract class can have own variables and methods, and only it's abstract methods has to be implemented 
+in it's subclasses.
+
 
 ### Analyzing URL
 Please name the parts of the URL below.
