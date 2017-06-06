@@ -1,6 +1,7 @@
 package com.greenfox.exam.spring.service;
 
 import com.greenfox.exam.spring.model.Question;
+import com.greenfox.exam.spring.model.QuestionAndAnswer;
 import com.greenfox.exam.spring.model.QuestionWrapper;
 import com.greenfox.exam.spring.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,12 @@ public class Quiz {
   public QuestionWrapper getQuestions() {
     QuestionWrapper questionWrapper = new QuestionWrapper();
     for (int i = 0; i < 5; i++) {
-      questionWrapper.addQuestion(randomQuestion());
+      questionWrapper.addQuestion(new Question(randomQuestion().getId(), randomQuestion().getQuestion()));
     }
     return questionWrapper;
   }
 
-  private Question randomQuestion() {
+  private QuestionAndAnswer randomQuestion() {
     return questionRepository.findOne(random());
   }
 
