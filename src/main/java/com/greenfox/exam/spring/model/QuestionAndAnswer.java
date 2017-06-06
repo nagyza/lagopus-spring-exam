@@ -15,7 +15,7 @@ public class QuestionAndAnswer {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+  private Long id;
   private String question;
   private String answer;
 
