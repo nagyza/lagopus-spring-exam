@@ -27,7 +27,7 @@ public class Quiz {
   public QuestionWrapper getQuestions() {
     QuestionWrapper questionWrapper = new QuestionWrapper();
     List<Long> questionIds = new ArrayList<>();
-    while (questionIds.size() < 6){
+    while (questionIds.size() < 5){
       QuestionAndAnswer questionAndAnswer = randomQuestion();
       if (questionIds.size() == 0) {
         questionIds.add(questionAndAnswer.getId());
@@ -54,6 +54,7 @@ public class Quiz {
             questionWrapper.getQuestions().get(3).getId(),
             questionWrapper.getQuestions().get(4).getId());
     questionListRepository.save(questionList);
+    questionWrapper.setId(questionList.getId());
     return questionWrapper;
   }
 
