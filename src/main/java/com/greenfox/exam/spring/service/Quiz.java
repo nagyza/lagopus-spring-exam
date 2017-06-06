@@ -1,9 +1,6 @@
 package com.greenfox.exam.spring.service;
 
-import com.greenfox.exam.spring.model.Question;
-import com.greenfox.exam.spring.model.QuestionAndAnswer;
-import com.greenfox.exam.spring.model.QuestionList;
-import com.greenfox.exam.spring.model.QuestionWrapper;
+import com.greenfox.exam.spring.model.*;
 import com.greenfox.exam.spring.repository.QuestionAndAnswerRepository;
 import com.greenfox.exam.spring.repository.QuestionListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +19,46 @@ public class Quiz {
   QuestionListRepository questionListRepository;
 
   public Quiz() {
+  }
+
+  public boolean analizeAnswers(AnswerWrapper answerWrapper) {
+    if (!checkAnswerWrapperId(answerWrapper.getId())) {
+      return false;
+    } else if (answerWrapper.getAnswers().size() < 5){
+      return false;
+    } else if (answerWrapper.getAnswers().size() > 5) {
+      return false;
+    } else {
+      return checkAnswers(answerWrapper);
+    }
+  }
+
+  private boolean checkAnswers(AnswerWrapper answerWrapper) {
+    boolean allAnswerOk = true;
+    for (int i = 0; i < 5; i++) {
+      Long id = answerWrapper.getAnswers().get(i).getId();
+      String answer = answerWrapper.getAnswers().get(i).getAnswer();
+      if (!checkAnswer(id, answer)) {
+        allAnswerOk = false;
+      }
+    }
+    return allAnswerOk;
+  }
+
+  private boolean checkAnswer(Long id, String answer) {
+    if (questionAndAnswerRepository.findOne(id).getAnswer().equals(answer)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private boolean checkAnswerWrapperId(Long id) {
+    if (questionListRepository.findOne(id) != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public QuestionWrapper getQuestions() {
