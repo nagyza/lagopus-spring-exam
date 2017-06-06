@@ -13,7 +13,7 @@ import java.util.List;
 public class AnswerWrapper {
 
   private Long id;
-  private List<Question> answers;
+  private List<Answer> answers;
 
   public AnswerWrapper() {
     this.answers = new ArrayList<>();
